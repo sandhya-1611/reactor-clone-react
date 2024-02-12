@@ -5,7 +5,7 @@ export default function Header() {
   const navigate = useNavigate() 
   function pathMathRoute(route)
   {
-    if(route==location.pathname)
+    if(route === location.pathname)
     {
       return true;
     }
@@ -29,7 +29,8 @@ export default function Header() {
                 Home
               </li>
               
-              <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMathRoute("/offers") && "text-black border-b-red-500"}`}
+              <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent 
+              ${pathMathRoute("/offers") && "text-black border-b-red-500"}`}
               onClick={()=>navigate("/offers")}
               >
                 Offers
