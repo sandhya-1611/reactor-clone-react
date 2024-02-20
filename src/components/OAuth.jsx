@@ -4,6 +4,8 @@ import {FcGoogle} from "react-icons/fc"
 import {toast} from "react-toastify";
 import { db } from "../Firebase";
 import {useNavigate} from "react-router-dom";
+
+
 export default function OAuth() {
   const navigate = useNavigate();
   async function onGoogleClick(){
