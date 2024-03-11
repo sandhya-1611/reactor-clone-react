@@ -210,7 +210,7 @@ export default function CreateListing() {
         userRef: auth.currentUser.uid,
       };
       delete formDataCopy.images;
-      !formDataCopy.offer && delete formDataCopy.discountedPrice;
+      !formDataCopy.offers && delete formDataCopy.discountedPrice;
       delete formDataCopy.latitude;
       delete formDataCopy.longitude;
       const docRef = doc(db, "listings",params.listingId)
