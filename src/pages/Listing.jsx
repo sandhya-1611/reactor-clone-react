@@ -19,6 +19,7 @@ import "swiper/css/bundle";
 import { FaChair,FaParking,FaBath,FaBed,FaShare,FaMapMarkerAlt } from "react-icons/fa";
 import {getAuth} from "firebase/auth";
 import Contact from "../components/Contact";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 export default function Listing() {
   const auth = getAuth()
@@ -75,7 +76,7 @@ export default function Listing() {
       >
           <FaShare />
       </div>
-      {shareLinkCopied && (
+      {shareLinkCopied && ( 
         <p className="fixed top-[23%] right-[5%] font-semibold border-2 border-gray-400 rounded-md bg-white z-10 p-2">
           Link Copied
         </p>
@@ -141,8 +142,20 @@ export default function Listing() {
             listing={listing}/>
           )}
         </div>
-        <div className="bg-blue-300 w-full h-[200px] lg-[400px] z-10 overflow-x-hidden">
-
+        <div className="w-full h-[200px] md:h-[400px] z-10 overflow-x-hidden mt-6 lg:mt-0 md:ml-2">
+        <MapContainer center={[listing.geolocation.lat, listing.geolocation.lng]} zoom={13} scrollWheelZoom={false}
+        style={{height:"100%" , width:"100%"}}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[listing.geolocation.lat, listing.geolocation.lng]}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+        </MapContainer>
         </div>
       </div>
 
