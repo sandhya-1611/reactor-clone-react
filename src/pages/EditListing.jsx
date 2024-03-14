@@ -195,31 +195,35 @@ export default function CreateListing() {
       });
     }
 
-    const imgUrls = await Promise.all(
-      [...images].map((image)=>storeImage(image))).catch((error)=>{
-        setLoading(false)
-        toast.error("Images not uploaded")
-        return 
-      });
+    // Upload images and get their URLs
+  const imgUrls = await Promise.all(
+    [...images].map((image) => storeImage(image))
+  ).catch((error) => {
+    setLoading(false);
+    toast.error("Images not uploaded");
+    return [];
+  });
 
-      const formDataCopy = {
-        ...formData,
-        imgUrls,
-        geolocation,
-        timestamp: serverTimestamp(),
-        userRef: auth.currentUser.uid,
-      };
-      delete formDataCopy.images;
-      !formDataCopy.offers && delete formDataCopy.discountedPrice;
-      delete formDataCopy.latitude;
-      delete formDataCopy.longitude;
-      const docRef = doc(db, "listings",params.listingId)
-      
-      await updateDoc(docRef, formDataCopy);
-      setLoading(false);
-      toast.success("Listing edited");
-      navigate(`/category/${formDataCopy.type}/${docRef.id}`);
-    }
+  const formDataCopy = {
+    ...formData,
+    imgUrls,
+    geolocation,
+    timestamp: serverTimestamp(),
+    userRef: auth.currentUser.uid,
+  };
+  delete formDataCopy.images;
+  !formDataCopy.offers && delete formDataCopy.discountedPrice;
+  delete formDataCopy.latitude;
+  delete formDataCopy.longitude;
+
+  // Update Firestore document
+  const docRef = doc(db, "listings", params.listingId);
+  await updateDoc(docRef, formDataCopy);
+
+  setLoading(false);
+  toast.success("Listing edited");
+  navigate(`/category/${formDataCopy.type}/${docRef.id}`);
+}
   
   if(loading)
   {
