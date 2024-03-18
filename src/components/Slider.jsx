@@ -8,7 +8,7 @@ import "swiper/css/bundle";
 import { useNavigate } from "react-router-dom";
 export default function Slider() {
   const [listings, setListings] = useState(null)
-  const [loading, setLoading] = useState(null)
+  const [loading, setLoading] = useState(true)
   const navigate = useNavigate();
   useEffect(() => {
     async function fetchListings() {
@@ -21,7 +21,7 @@ export default function Slider() {
         );
         // execute the query
         const querySnap = await getDocs(q);
-        const listings = [];
+        let listings = [];
         querySnap.forEach((doc) => {
           return listings.push({
             id: doc.id,
@@ -37,7 +37,7 @@ export default function Slider() {
   {
     return <Spinner/>;
   }
-  if(!listings || listings.length===0)
+  if(listings.length === 0)
   {
     return <></>
   }

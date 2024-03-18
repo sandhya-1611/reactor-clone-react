@@ -119,7 +119,7 @@ export default function Profile() {
                   {changeDetail ? "Apply change" : "Edit"}
                 </span>
               </p>
-              <p onClick={onLogout} className="text-blue-600 hover:text-blue-700 transition ease-in-out duration-200 cursor-pointer">Sign out</p>
+              <p onClick={onLogout} className="text-blue-600 hover:text-blue-700 transition ease-in-out duration-200 cursor-pointer"> Sign out </p>
             </div>
           </form>
           <button type="submit" className="w-full bg-blue-600 text-white py-3 px-7 text-sm font-medium uppercase rounded shadow-md hover:bg-blue-700 transition duration-150 ease-in-out hover:shadow-large active:bg-blue-800" 

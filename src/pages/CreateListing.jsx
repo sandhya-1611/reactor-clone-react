@@ -176,7 +176,7 @@ export default function CreateListing() {
         userRef: auth.currentUser.uid,
       };
       delete formDataCopy.images;
-      !formDataCopy.offer && delete formDataCopy.discountedPrice;
+      !formDataCopy.s && delete formDataCopy.discountedPrice;
       delete formDataCopy.latitude;
       delete formDataCopy.longitude;
       const docRef = await addDoc(collection(db, "listings"), formDataCopy);
@@ -221,7 +221,7 @@ export default function CreateListing() {
               min="1"
               max="50"
               required
-              className="w-full px=4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600"/>
+              className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"/>
           </div>
           <div >
             <p className="text-lg font-semibold">
@@ -235,7 +235,7 @@ export default function CreateListing() {
               min="1"
               max="50"
               required
-              className="w-full px=4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600"/>
+              className="w-full px=4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"/>
           </div>
         </div>
 
@@ -374,7 +374,7 @@ export default function CreateListing() {
                   className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"/>
                   {type === "rent" && (
                     <div className="">
-                      <p className="text-md w-full">
+                      <p className="text-md w-full whitespace-nowrap">
                         $ / Month
                       </p>
                     </div>
