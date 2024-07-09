@@ -176,7 +176,7 @@ export default function CreateListing() {
         userRef: auth.currentUser.uid,
       };
       delete formDataCopy.images;
-      !formDataCopy.s && delete formDataCopy.discountedPrice;
+      !formDataCopy.offers && delete formDataCopy.discountedPrice;
       delete formDataCopy.latitude;
       delete formDataCopy.longitude;
       const docRef = await addDoc(collection(db, "listings"), formDataCopy);

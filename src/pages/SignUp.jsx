@@ -26,11 +26,11 @@ export default function SignUp() {
     setFormData((prevState)=>({
       ...prevState,
       [e.target.id]:e.target.value,
-    }) )
+    }) );
   }
 
   async function onSubmit(e){
-      e.preventDefault()
+      e.preventDefault();
 
   try {
     const auth = getAuth()
@@ -49,7 +49,7 @@ export default function SignUp() {
 
     await setDoc(doc(db, "users", user.uid), formDataCopy)
     // toast.success("Sign up was successfull")
-    navigate("/");
+    // navigate("/");
   } catch (error) {
     toast.error("Something went wrong with the registration")
   }
@@ -119,5 +119,5 @@ export default function SignUp() {
         </div>
       </div>
     </section>
-  )
+  );
 }

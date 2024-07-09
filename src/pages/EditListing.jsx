@@ -234,10 +234,10 @@ export default function CreateListing() {
       <h1 className="text-3xl text-center mt-6 font-bold">
         Edit Listing
       </h1>
-      <form onSubmit={onSubmit}>
+       <form onSubmit={onSubmit}>
         <p className="text-lg mt-6 font-semibold">Sell / Rent</p>
         <div className="flex ">
-        <button type="button" id="type" value="sale" onClick={onChange} className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg transition duration-50 ease-in-out w-full ${type === "rent" ? "bg-white text-black" : "bg-slate-600 text-white"}`}>
+        <button type="button" id="type" value="sale" onClick={onChange} className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg transition duration-50 ease-in-out w-full ${type === "rent" ? "bg-white text-black" : "bg-slate-600 text-white"}` }>
               sell
         </button>
         <button type="button" id="type" value="rent" onClick={onChange} className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg transition duration-50 ease-in-out w-full ${type === "sale" ? "bg-white text-black" : "bg-slate-600 text-white"}`}>
@@ -429,7 +429,7 @@ export default function CreateListing() {
           <input type="file"  
             id="images" 
             onChange={onChange} 
-            accept=".jpg,.png,.jpeg" 
+            accept=".jpg,.jpeg.,.png" 
             multiple 
             required
             className="w-full px-3 py-1.5 text-gray-700 bg-white-border border-gray-300 rounded transition duration-150 ease-in-out focus:bg-white focus:border-slate-600"/>

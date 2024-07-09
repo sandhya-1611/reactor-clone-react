@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Slider from "../components/Slider";
-import { collection, getDocs, limit, orderBy, query, where } from "firebase/firestore";
+import { collection, getDoc, getDocs, limit, orderBy, query, where } from "firebase/firestore";
 import { db } from "../Firebase";
 import ListingItem from "../components/ListingItem";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ export default function Home() {
         const q = query(
           listingsRef,
           where("offers", "==", true),
-          orderBy("timestamp", "desc"),
+          orderBy("timestamp", "asc"),
           limit(4)
         );
         // execute the query
@@ -47,7 +47,7 @@ export default function Home() {
         const q = query(
           listingsRef,
           where("type", "==", "rent"),
-          orderBy("timestamp", "desc"),
+          orderBy("timestamp", "asc"),
           limit(4)
         );
         // execute the query
@@ -77,7 +77,7 @@ export default function Home() {
          const q = query(
            listingsRef,
            where("type", "==", "sale"),
-           orderBy("timestamp", "desc"),
+           orderBy("timestamp", "asc"),
            limit(4)
          );
          // execute the query

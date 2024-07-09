@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, getAuth,getGoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth"
 import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import {FcGoogle} from "react-icons/fc"
 import {toast} from "react-toastify";
@@ -31,7 +31,6 @@ export default function OAuth() {
 
     } catch (error) {
       toast.error("Could not authorize with Google")
-      console.log(error);
     }
   }
 
