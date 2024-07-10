@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Slider from "../components/Slider";
-import { collection, getDoc, getDocs, limit, orderBy, query, where } from "firebase/firestore";
+import { collection, getDocs, limit, orderBy, query, where } from "firebase/firestore";
 import { db } from "../Firebase";
 import ListingItem from "../components/ListingItem";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 export default function Home() {
   // Offers
   const [offerListings, setOfferListings] = useState(null);
+
   useEffect(() => {
     async function fetchListings() {
       try {
@@ -17,11 +18,12 @@ export default function Home() {
         const q = query(
           listingsRef,
           where("offers", "==", true),
-          orderBy("timestamp", "asc"),
+          orderBy("timestamp", "desc"),
           limit(4)
         );
         // execute the query
         const querySnap = await getDocs(q);
+        console.log(querySnap);
         const listings = [];
         querySnap.forEach((doc) => {
           return listings.push({
@@ -30,6 +32,7 @@ export default function Home() {
           });
         });
         setOfferListings(listings);
+        console.log(listings);
       } catch (error) {
         console.log(error);
       }
@@ -47,7 +50,7 @@ export default function Home() {
         const q = query(
           listingsRef,
           where("type", "==", "rent"),
-          orderBy("timestamp", "asc"),
+          orderBy("timestamp", "desc"),
           limit(4)
         );
         // execute the query
@@ -77,7 +80,7 @@ export default function Home() {
          const q = query(
            listingsRef,
            where("type", "==", "sale"),
-           orderBy("timestamp", "asc"),
+           orderBy("timestamp", "desc"),
            limit(4)
          );
          // execute the query
